@@ -13,7 +13,14 @@
  <body>
 
     <nav>
-        <ul>
+        <button class="menu-toggle"
+    onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul id="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -32,7 +39,7 @@
             <h1 class="portfolio-title">SARIKA PORTFOLIO</h1>
 
             <h2>I am Sarika Pimple</h2>
->
+
             <p class="typing-text">Frontend Developer</p>
             
             <p>
@@ -160,46 +167,44 @@
         <p>&copy; 2026 Sarika Pimple | Frontend Developer</p>
     </footer>
 
+     </h3>
+
     <section id="contact">
-        <p><i class="fa-solid fa-phone"></i> +91 9356588953</p>
+    <h2>Contact Me</h2>
 
-        
-        <div class="contact-icons">
+    <p class="contact-text">
+        Feel free to get in touch with me for opportunities, projects or collaboration.
+    </p>
 
-    <h3>
+    <div class="contact-details">
+
+        <p>
+            <i class="fa-solid fa-phone"></i>
+            +91 9356588953
+        </p>
+
+        <p>
+            <i class="fa-solid fa-envelope"></i>
+            sarikapimple@gmail.com
+        </p>
+
+    </div>
+
+    <div class="contact-icons">
+
         <a href="mailto:sarikapimple13@gmail.com">
             <i class="fa-solid fa-envelope"></i>
-            <span>Email</span>
+            <span>Email</span> 
         </a>
-    </h3>
 
-    <h3>
-        <a href="https://www.linkedin.com/in/sarika-pimple-3070143a9/"
-           target="_blank">
-            <i class="fab fa-linkedin-in"></i>
+        <a href="https://www.linkedin.com/in/sarika-pimple-3070143a9?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank">
+            <i class="fa-brands fa-linkedin"></i>
             <span>LinkedIn</span>
         </a>
-    </h3>
 
-    <h3>
-        <a href="https://github.com/sarikanarayanpimple"
-           target="_blank">
-            <i class="fab fa-github"></i>
-            <span>GitHub</span>
-        </a>
-    </h3>
-
-    <h3>
-        <a href="https://www.instagram.com/sarika.pimple.patil/"
-           target="_blank">
-            <i class="fab fa-instagram"></i>
-            <span>Instagram</span>
-        </a>
-    </h3>
-
-</div>
-
-    </section>
+        <a href="https://github.com/sarikanarayanpimple" target="_blank">
+            <i class="fa-brands fa-github"></i>
+            <span>GitHub
 
 
     <script>
@@ -216,7 +221,12 @@
             }
         }
 
-    typeEffect();    
+    typeEffect(); 
+    
+    function toggleMenu() {
+
+    document.querySelector("nav-links").classList.toggle("active");    
+    }
     </script>
 
  </body>

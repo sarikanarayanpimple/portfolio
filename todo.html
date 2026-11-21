@@ -89,25 +89,70 @@ placeholder="Enter task">
     </div>
 
     <script>
-        function addTask(){
-            let input = document.getElementById("taskInput");
-            let task = input.value;
 
-            if (task === "") {
-                alert("Please enter a task!");
-                return;
-            }
+function addTask() {
+    let input = document.getElementById("taskInput");
+    let task = input.value.trim();
 
-           let li = document.createElement("li");
+    if (task === "") {
+        alert("Please enter a task!");
+        return;
+    }
+let li = document.createElement("li");
+    li.innerText = task + " ";
 
-           li.innerHTML = task + 
-           "<button class='delete' onclick='this.parentElement.remove()'>delete</button>";
+    let button = document.createElement("button");
+    button.innerText = "delete";
+    button.className = "delete";
 
-document.getElementById("taskList").appendChild(li);
-     
-    input.value = ""; 
-}    
-    </script>
+    button.onclick = function () {
+        li.remove();
+        saveTasks();
+    };
+
+    li.appendChild(button);
+
+    document.getElementById("taskList").appendChild(li);
+
+    input.value = "";
+
+    saveTasks();
+}
+function saveTasks() {
+    let tasks = [];
+
+    document.querySelectorAll("#taskList li").forEach(function (li) {
+        let taskText = li.childNodes[0].textContent.trim();
+        tasks.push(taskText);
+    });
+
+    localStorage.setItem("todoTasks", JSON.stringify(tasks));
+}
+function loadTasks() {
+    let tasks = JSON.parse(localStorage.getItem("todoTasks")) || [];
+
+    tasks.forEach(function (task) {
+
+        let li = document.createElement("li");
+        li.innerText = task + " ";
+
+        let button = document.createElement("button");
+        button.innerText = "delete";
+        button.className = "delete";
+button.onclick = function () {
+            li.remove();
+            saveTasks();
+        };
+
+        li.appendChild(button);
+
+        document.getElementById("taskList").appendChild(li);
+    });
+}
+
+window.onload = loadTasks;
+
+</script>
 
 </body>   
 </html>
